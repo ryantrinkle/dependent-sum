@@ -11,7 +11,7 @@ module Data.GADT.Compare where
 
 import Data.Maybe
 import Data.GADT.Show
-import Data.Typeable hiding (Refl (..))
+import Data.Typeable hiding (Refl)
 
 -- |A GADT witnessing equality of two types.  Its only inhabitant is 'Refl'.
 data a := b where

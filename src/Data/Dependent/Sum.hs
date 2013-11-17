@@ -122,7 +122,7 @@ instance Read a => ReadTag ((:=) a) where
 --         , con == "error "
 --         , (msg, rest') <- reads rest :: [(String, String)]
 --         ]
-
+{-
 instance ReadTag tag => Read (DSum tag) where
     readsPrec p = readParen (p > 1) $ \s -> 
         concat
@@ -134,7 +134,7 @@ instance ReadTag tag => Read (DSum tag) where
             , let (con, rest') = splitAt 5 rest
             , con == " :=> "
             ]
-
+-}
 -- |In order to test @DSum tag@ for equality, @tag@ must know how to test
 -- both itself and its tagged values for equality.  'EqTag' defines
 -- the interface by which they are expected to do so.

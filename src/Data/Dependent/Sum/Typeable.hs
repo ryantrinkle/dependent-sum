@@ -1,4 +1,7 @@
 {-# LANGUAGE CPP #-}
+#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 707
+{-# LANGUAGE StandaloneDeriving #-}
+#endif
 #if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Trustworthy #-}
 #endif
@@ -9,7 +12,11 @@ module Data.Dependent.Sum.Typeable where
 import {-# SOURCE #-} Data.Dependent.Sum
 import Data.Typeable
 
-#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
+#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 707
+
+deriving instance Typeable DSum
+
+#elif defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
 
 instance Typeable1 t => Typeable (DSum t) where
     typeOf ds = mkTyConApp dSumCon [typeOfT]
